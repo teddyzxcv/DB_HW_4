@@ -8,8 +8,8 @@ services:
       PGDATA: "/var/lib/postgresql/data/pgdata"
     volumes:
       - ./docker/db/scripts/HW4_db.sql:/docker-entrypoint-initdb.d/HW4_db.sql
-      - ./docker/db/scripts/HW4_db_copy.sql:/docker-entrypoint-initdb.d/HW4_db1.sql
-      - ./docker/db/scripts/HW4_db_copy_2.sql:/docker-entrypoint-initdb.d/HW4_db2.sql
+      - ./docker/db/scripts/HW4_hospital.sql:/docker-entrypoint-initdb.d/HW4_hospital.sql
+      - ./docker/db/scripts/HW4_station.sql:/docker-entrypoint-initdb.d/HW4_station.sql
       - ./docker/db/data:/var/lib/postgresql/data
     ports:
       - "5432:5432"

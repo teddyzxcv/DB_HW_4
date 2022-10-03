@@ -1,10 +1,10 @@
-CREATE DATABASE hospital;
-GRANT ALL PRIVILEGES ON DATABASE hospital TO pan_206;
+CREATE DATABASE library;
+GRANT ALL PRIVILEGES ON DATABASE library TO pan_206;
 
-\connect hospital
+\connect library
 
 CREATE TABLE "book" (
-  "isbn" SERIAL PRIMARY KEY,
+  "isbn" varchar(17) PRIMARY KEY,
   "pages" integer,
   "creater" varchar(50),
   "publisher" integer,
@@ -42,7 +42,7 @@ CREATE TABLE "reader" (
 CREATE TABLE "borrowing" (
   "id" integer PRIMARY KEY,
   "reader_id" integer,
-  "isbn" integer,
+  "isbn" varchar(17),
   "copy_id" integer,
   "return_date" date
 );
@@ -53,7 +53,7 @@ CREATE TABLE "category_tree" (
 );
 
 CREATE TABLE "book_category" (
-  "isbn" integer,
+  "isbn" varchar(17),
   "category_id" integer
 );
 
@@ -73,3 +73,4 @@ ALTER TABLE "borrowing" ADD FOREIGN KEY ("reader_id") REFERENCES "reader" ("id")
 
 ALTER TABLE "borrowing" ADD FOREIGN KEY ("isbn") REFERENCES "book" ("isbn");
 
+ALTER TABLE "copy" ADD FOREIGN KEY ("isbn") REFERENCES "book" ("isbn");
